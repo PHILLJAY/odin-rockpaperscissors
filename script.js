@@ -35,14 +35,30 @@ console.log("Hello World");
 
 function CalculateWinner() {
   const result = playerThrow - cpuThrow;
+  if (playerThrow == 0 || cpuThrow == 0) {
+    console.error("Error, one of the players has not picked rock or paper");
+    console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
+  }
+  //this covers ties
   if (result == 0) {
     console.log("It is a tie pleases throw again");
     return 0;
-  }
-  if (Math.abs(result) == 1) {
+  } else if (Math.abs(result) == 1) {
+    //this covers the paper-rock and scissors-paper cases
     if (result > 0) {
-      console.log();
+      console.log("You win!");
       return 1;
+    } else {
+      console.log("You Lose :(");
+      return 2;
+    }
+  } else {
+    if (result < 0) {
+      console.log("You win!");
+      return 1;
+    } else {
+      console.log("You Lose :(");
+      return 2;
     }
   }
 }
@@ -50,3 +66,7 @@ function CalculateWinner() {
 function genCPUThrow(characther) {
   cpuThrow = Math.random() * 3 + 1;
 }
+
+// No throws
+CalculateWinner();
+playerThrow = 1;
