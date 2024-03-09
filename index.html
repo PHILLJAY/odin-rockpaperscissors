@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="script.js"></script>
-</head>
-<body>
-    
-</body>
+    <style>
+      * {
+        font-family: "Times New Roman", Times, serif;
+      }
+    </style>
+    <!-- You can use Open Graph tags to customize link previews.
+Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+    <meta property="og:url" content="www.google.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Googel" />
+    <meta property="og:description" content="Search Lots of epic awesomsauce" />
+    <meta
+      property="og:image"
+      content="https://th.bing.com/th/id/R.67ff3c450ae4ce9cb15bc22e1682711b?rik=E%2bOOpi4WQdX0oQ&riu=http%3a%2f%2fpngimg.com%2fuploads%2ftrollface%2ftrollface_PNG30.png&ehk=5H47%2b4RZMvkyjk5SjmU858Q58iBcnaAgvuEwFQYD60I%3d&risl=&pid=ImgRaw&r=0"
+    />
+  </head>
+  <body>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src =
+          "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+    <h1>Rock Paper Scissors</h1>
+    <div>
+      <h1></h1>
+    </div>
+    <!-- Your share button code -->
+    <div
+      class="fb-share-button"
+      data-href="https://www.your-domain.com/your-page.html"
+      data-layout="button_count"
+    ></div>
+  </body>
 </html>
