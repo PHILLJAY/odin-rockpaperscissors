@@ -38,6 +38,7 @@ function calculateWinner() {
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
+    return 0;
   }
   //this covers ties
   if (result == 0) {
@@ -64,25 +65,32 @@ function calculateWinner() {
 }
 
 function genCPUThrow(characther) {
-  cpuThrow = Math.random() * 3 + 1;
+  cpuThrow = Math.floor(Math.random() * 3 + 1);
+  console.log(`I have generated this number ${cpuThrow}`);
 }
 
-console.log("⚠️ testing")
-console.log("~~No one throws error~~")
+/*console.log("⚠️ testing");
+console.log("~~No one throws error~~");
 // No throws
 calculateWinner();
 
-console.log("~~Player throws but cpu does not~~")
+console.log("~~Player throws but cpu does not~~");
 //player throws but CPU does not
 playerThrow = 1;
-calculateWinner()
+calculateWinner();
 
-console.log("~~tie scenario~~")
+console.log("~~tie scenario~~");
 //calculate tie
 cpuThrow = 1;
-calculateWinner()
+calculateWinner();
 
-console.log("~~Player wins this one~~")
+console.log("~~Player wins this one~~");
 //calculate player winner
 playerThrow = 2;
-calculateWinner():
+calculateWinner();*/
+
+/*console.log("~~CPU wins with a rock over scissors~~");
+playerThrow = 3;
+cpuThrow = 1;
+calculateWinner();
+*/
