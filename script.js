@@ -33,7 +33,7 @@ let cpuThrow = 0;
 
 console.log("Hello World");
 
-function CalculateWinner() {
+function calculateWinner() {
   const result = playerThrow - cpuThrow;
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
@@ -67,6 +67,22 @@ function genCPUThrow(characther) {
   cpuThrow = Math.random() * 3 + 1;
 }
 
+console.log("⚠️ testing")
+console.log("~~No one throws error~~")
 // No throws
-CalculateWinner();
+calculateWinner();
+
+console.log("~~Player throws but cpu does not~~")
+//player throws but CPU does not
 playerThrow = 1;
+calculateWinner()
+
+console.log("~~tie scenario~~")
+//calculate tie
+cpuThrow = 1;
+calculateWinner()
+
+console.log("~~Player wins this one~~")
+//calculate player winner
+playerThrow = 2;
+calculateWinner():
