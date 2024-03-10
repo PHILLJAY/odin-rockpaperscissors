@@ -48,9 +48,11 @@ function calculateWinner() {
     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
     return 0;
   }
+  console.log(`You threw ${handToString(playerThrow)}`);
+  console.log(`The CPU threw ${handToString(cpuThrow)}`);
   //this covers ties
   if (result == 0) {
-    console.log("It is a tie pleases throw again");
+    console.log("It's a tie pleases throw again");
     return 0;
   } else if (Math.abs(result) == 1) {
     //this covers the paper-rock and scissors-paper cases
