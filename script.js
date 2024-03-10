@@ -93,7 +93,7 @@ function calculateWinner() {
   }
 }
 
-function genCPUThrow(characther) {
+function getComputerChoice(characther) {
   cpuThrow = Math.floor(Math.random() * 3 + 1);
   //console.log(`I have generated this number ${cpuThrow}`);
 }
@@ -105,9 +105,10 @@ function playGame() {
   while (playerScore < 3 && cpuScore < 3) {
     // Checks for valid unputs
     while (true) {
-      playerThrow = prompt(`type rock, paper or scissors!`);
+      const stringInput = prompt(`type rock, paper or scissors!`);
+      playerThrow = parseRockPaperScissors(stringInput);
 
-      if (playerThrow === null) {
+      if (stringInput === null) {
         console.log("Game canceled. Goodbye!");
         return;
       }
@@ -119,7 +120,7 @@ function playGame() {
       }
     }
     //todo: add verification the player only put 1 2 or 3
-    genCPUThrow();
+    getComputerChoice();
     result = calculateWinner();
     if (result == 1) {
       playerScore++;
