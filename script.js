@@ -83,7 +83,7 @@ function playGame() {
   console.log("Welcome to Rock paper scissors!");
   let playerScore = 0;
   let cpuScore = 0;
-  while (playerScore < 2 && cpuScore < 2) {
+  while (playerScore < 3 && cpuScore < 3) {
     // Checks for valid unputs
     while (true) {
       playerThrow = prompt(`input 1 for rock, 2 for paper, 3 for scissors`);
@@ -111,7 +111,7 @@ function playGame() {
     console.log(`You: ${playerScore}|| CPU: ${cpuScore}`);
   }
 
-  if (playerScore == 2) {
+  if (playerScore == 3) {
     console.log(`🎊YOU WIN CONGRADULATIONS🎊`);
   } else {
     console.log(`🥲YOU LOSE SORRY BOZO🥲`);
