@@ -1,16 +1,3 @@
-//Psuedocode
-//Interface:
-//  Title
-//  Current Score (best of 3)
-//  3 buttons, rock, paper, scissors
-//  Popup display of "state"
-//      Win, Loss, Tie, Try again
-//
-//Logic:
-//  Bool: Gamestate (true = done, false = in progress)
-//  Int: User throw
-//  Int: Bot Throw
-//
 //Functions:
 //  Calculate Winner
 //      Compare user throw to bot throw
@@ -32,6 +19,27 @@ let cpuThrow = 0;
 //Rock - Scissors = -2
 
 console.log("Hello World");
+
+function handToString(hand) {
+  switch (hand) {
+    case 0:
+      return "undefined";
+      break;
+
+    case 1:
+      return "rock";
+      break;
+    case 2:
+      return "paper";
+      break;
+    case 3:
+      return "scissors";
+      break;
+    default:
+      return "invalid";
+      break;
+  }
+}
 
 function calculateWinner() {
   const result = playerThrow - cpuThrow;
@@ -66,7 +74,21 @@ function calculateWinner() {
 
 function genCPUThrow(characther) {
   cpuThrow = Math.floor(Math.random() * 3 + 1);
-  console.log(`I have generated this number ${cpuThrow}`);
+  //console.log(`I have generated this number ${cpuThrow}`);
+}
+
+function playGame() {
+  console.log("Welcome to Rock paper scissors!");
+  playerThrow = prompt(`input 1 for rock, 2 for paper, 3 for scissors`);
+  //todo: add verification the player only put 1 2 or 3
+  genCPUThrow();
+  calculateWinner();
+  //todo: game loops if it is a tie
+  //todo: display what was thrown lol
+}
+
+function testStringConversion(input) {
+  console.log(handToString(input));
 }
 
 /*console.log("⚠️ testing");
