@@ -20,6 +20,25 @@ let cpuThrow = 0;
 
 console.log("Hello World");
 
+function parseRockPaperScissors(input) {
+  switch (input.toUppercase()) {
+    case ROCK:
+      return 1;
+      break;
+
+    case PAPER:
+      return 2;
+      break;
+
+    case SCISSORS:
+      return 3;
+      break;
+    default:
+      return 0;
+      break;
+  }
+}
+
 function handToString(hand) {
   switch (parseInt(hand)) {
     case 0:
