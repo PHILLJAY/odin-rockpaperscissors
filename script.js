@@ -21,7 +21,7 @@ let cpuThrow = 0;
 console.log("Hello World");
 
 function handToString(hand) {
-  switch (hand) {
+  switch (parseInt(hand)) {
     case 0:
       return "undefined";
       break;
@@ -81,12 +81,41 @@ function genCPUThrow(characther) {
 
 function playGame() {
   console.log("Welcome to Rock paper scissors!");
-  playerThrow = prompt(`input 1 for rock, 2 for paper, 3 for scissors`);
-  //todo: add verification the player only put 1 2 or 3
-  genCPUThrow();
-  calculateWinner();
-  //todo: game loops if it is a tie
-  //todo: display what was thrown lol
+  let playerScore = 0;
+  let cpuScore = 0;
+  while (playerScore < 2 && cpuScore < 2) {
+    // Checks for valid unputs
+    while (true) {
+      playerThrow = prompt(`input 1 for rock, 2 for paper, 3 for scissors`);
+
+      if (playerThrow === null) {
+        console.log("Game canceled. Goodbye!");
+        return;
+      }
+
+      if (isNaN(playerThrow) || playerThrow < 1 || playerThrow > 3) {
+        console.log("Invalid input. Please enter 1, 2, or 3.");
+      } else {
+        break; // Valid input, exit the loop
+      }
+    }
+    //todo: add verification the player only put 1 2 or 3
+    genCPUThrow();
+    result = calculateWinner();
+    if (result == 1) {
+      playerScore++;
+    } else if (result == 2) {
+      cpuScore++;
+    }
+
+    console.log(`You: ${playerScore}|| CPU: ${cpuScore}`);
+  }
+
+  if (playerScore == 2) {
+    console.log(`🎊YOU WIN CONGRADULATIONS🎊`);
+  } else {
+    console.log(`🥲YOU LOSE SORRY BOZO🥲`);
+  }
 }
 
 function testStringConversion(input) {
