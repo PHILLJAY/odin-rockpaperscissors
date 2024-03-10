@@ -105,7 +105,7 @@ function playGame() {
   while (playerScore < 3 && cpuScore < 3) {
     // Checks for valid unputs
     while (true) {
-      playerThrow = prompt(`input 1 for rock, 2 for paper, 3 for scissors`);
+      playerThrow = prompt(`type rock, paper or scissors!`);
 
       if (playerThrow === null) {
         console.log("Game canceled. Goodbye!");
