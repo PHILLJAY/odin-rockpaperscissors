@@ -21,16 +21,16 @@ let cpuThrow = 0;
 console.log("Hello World");
 
 function parseRockPaperScissors(input) {
-  switch (input.toUppercase()) {
-    case ROCK:
+  switch (input.toUpperCase()) {
+    case "ROCK":
       return 1;
       break;
 
-    case PAPER:
+    case "PAPER":
       return 2;
       break;
 
-    case SCISSORS:
+    case "SCISSORS":
       return 3;
       break;
     default:
