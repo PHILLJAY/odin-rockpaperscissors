@@ -7,8 +7,14 @@
 //      Resests gamestate
 //
 
-let playerThrow = 0;
-let cpuThrow = 0;
+//TODO: Add console.log output to playRound
+//TODO: Add div to index.html for output
+//TODO: Create event listeners with each button that play a round
+//TODO: Switch console.logs to updating the div.
+
+
+let humanScore = 0;
+let CpuScore = 0;
 
 //1 = Rock
 //2 = Paper
@@ -60,38 +66,72 @@ function handToString(hand) {
   }
 }
 
-function calculateWinner() {
+function playRound(playerChoice, cpuThrow) {
+playerThrow = parseRockPaperScissors(playerChoice);
   const result = playerThrow - cpuThrow;
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
     return 0;
   }
-  console.log(`You threw ${handToString(playerThrow)}`);
-  console.log(`The CPU threw ${handToString(cpuThrow)}`);
+  //console.log(`You threw ${handToString(playerThrow)}`);
+  //console.log(`The CPU threw ${handToString(cpuThrow)}`);
   //this covers ties
   if (result == 0) {
-    console.log("It's a tie pleases throw again");
+    console.log(`Tie! you both threw`);
     return 0;
   } else if (Math.abs(result) == 1) {
     //this covers the paper-rock and scissors-paper cases
     if (result > 0) {
-      console.log("You win!");
+      //console.log("You win!");
       return 1;
     } else {
-      console.log("You Lose :(");
+      //console.log("You Lose :(");
       return 2;
     }
   } else {
     if (result < 0) {
-      console.log("You win!");
+      //console.log("You win!");
       return 1;
     } else {
-      console.log("You Lose :(");
+      //console.log("You Lose :(");
       return 2;
     }
   }
 }
+
+// function calculateWinner() {
+//   const result = playerThrow - cpuThrow;
+//   if (playerThrow == 0 || cpuThrow == 0) {
+//     console.error("Error, one of the players has not picked rock or paper");
+//     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
+//     return 0;
+//   }
+//   console.log(`You threw ${handToString(playerThrow)}`);
+//   console.log(`The CPU threw ${handToString(cpuThrow)}`);
+//   //this covers ties
+//   if (result == 0) {
+//     console.log("It's a tie pleases throw again");
+//     return 0;
+//   } else if (Math.abs(result) == 1) {
+//     //this covers the paper-rock and scissors-paper cases
+//     if (result > 0) {
+//       console.log("You win!");
+//       return 1;
+//     } else {
+//       console.log("You Lose :(");
+//       return 2;
+//     }
+//   } else {
+//     if (result < 0) {
+//       console.log("You win!");
+//       return 1;
+//     } else {
+//       console.log("You Lose :(");
+//       return 2;
+//     }
+//   }
+// }
 
 function getComputerChoice(characther) {
   cpuThrow = Math.floor(Math.random() * 3 + 1);
