@@ -98,45 +98,45 @@ function getComputerChoice(characther) {
   //console.log(`I have generated this number ${cpuThrow}`);
 }
 
-function playGame() {
-  console.log("Welcome to Rock paper scissors!");
-  let playerScore = 0;
-  let cpuScore = 0;
-  while (playerScore < 3 && cpuScore < 3) {
-    // Checks for valid unputs
-    while (true) {
-      const stringInput = prompt(`type rock, paper or scissors!`);
-      playerThrow = parseRockPaperScissors(stringInput);
+// function playGame() {
+//   console.log("Welcome to Rock paper scissors!");
+//   let playerScore = 0;
+//   let cpuScore = 0;
+//   while (playerScore < 3 && cpuScore < 3) {
+//     // Checks for valid unputs
+//     while (true) {
+//       const stringInput = prompt(`type rock, paper or scissors!`);
+//       playerThrow = parseRockPaperScissors(stringInput);
 
-      if (stringInput === null) {
-        console.log("Game canceled. Goodbye!");
-        return;
-      }
+//       if (stringInput === null) {
+//         console.log("Game canceled. Goodbye!");
+//         return;
+//       }
 
-      if (isNaN(playerThrow) || playerThrow < 1 || playerThrow > 3) {
-        console.log("Invalid input. Please enter 1, 2, or 3.");
-      } else {
-        break; // Valid input, exit the loop
-      }
-    }
-    //todo: add verification the player only put 1 2 or 3
-    getComputerChoice();
-    result = calculateWinner();
-    if (result == 1) {
-      playerScore++;
-    } else if (result == 2) {
-      cpuScore++;
-    }
+//       if (isNaN(playerThrow) || playerThrow < 1 || playerThrow > 3) {
+//         console.log("Invalid input. Please enter 1, 2, or 3.");
+//       } else {
+//         break; // Valid input, exit the loop
+//       }
+//     }
+//     //todo: add verification the player only put 1 2 or 3
+//     getComputerChoice();
+//     result = calculateWinner();
+//     if (result == 1) {
+//       playerScore++;
+//     } else if (result == 2) {
+//       cpuScore++;
+//     }
 
-    console.log(`You: ${playerScore}|| CPU: ${cpuScore}`);
-  }
+//     console.log(`You: ${playerScore}|| CPU: ${cpuScore}`);
+//   }
 
-  if (playerScore == 3) {
-    console.log(`🎊YOU WIN CONGRADULATIONS🎊`);
-  } else {
-    console.log(`🥲YOU LOSE SORRY BOZO🥲`);
-  }
-}
+//   if (playerScore == 3) {
+//     console.log(`🎊YOU WIN CONGRADULATIONS🎊`);
+//   } else {
+//     console.log(`🥲YOU LOSE SORRY BOZO🥲`);
+//   }
+// }
 
 function testStringConversion(input) {
   console.log(handToString(input));
