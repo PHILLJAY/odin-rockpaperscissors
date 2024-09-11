@@ -8,29 +8,69 @@
 //
 
 // TODO: Add event listeners to each button (DONE)
-// TODO: Enable each button to play a round in console
+// TODO: Enable each button to play a round in console (DONE)
+// TODO: Add function to update cpu score and human score
 // TODO: Create Div for results
 // TODO: Change script to update results Div
 // TODO: Add div for score
 // TODO: update scripts again
 
 let humanScore = 0;
-let CpuScore = 0;
+let cpuScore = 0;
+
+//  getters and setters
+function getHumanScore() {
+  return humanScore;
+}
+
+function setHumanScore(newScore) {
+  humanScore = newScore;
+}
+
+function getCpuScore() {
+  return cpuScore;
+}
+
+function setCpuScore(newScore) {
+  cpuScore = newScore;
+}
+
+function resetGame() {
+  humanScore = 0;
+  cpuScore = 0;
+}
+
+//Event Listeners
+let cpuThrow = 0;
+let playerThrow = 0;
 
 const rockBtn = document.querySelector("#rockBtn");
 const paperBtn = document.querySelector("#paperBtn");
 const scissorsBtn = document.querySelector("#scissorsBtn");
 
 rockBtn.addEventListener("click", () => {
-  playRound(1, getComputerChoice());
+  switch (playRound(1, getComputerChoice())) {
+    case -1:
+      console.log("ERROR");
+      break;
+    case 0:
+      break;
+    case 1:
+      humanScore++;
+      break;
+    case 2:
+      cpuScore++;
+    default:
+      break;
+  }
 });
 
 paperBtn.addEventListener("click", () => {
-  alert("Paper");
+  playRound(2, getComputerChoice());
 });
 
 scissorsBtn.addEventListener("click", () => {
-  alert("Scissors");
+  playRound(3, getComputerChoice());
 });
 //1 = Rock
 //2 = Paper
@@ -68,7 +108,7 @@ function playRound(playerThrow, cpuThrow) {
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
-    return 0;
+    return -1;
   }
   //this covers ties
   if (result == 0) {
