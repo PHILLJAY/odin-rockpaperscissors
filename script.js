@@ -22,7 +22,7 @@ const paperBtn = document.querySelector("#paperBtn");
 const scissorsBtn = document.querySelector("#scissorsBtn");
 
 rockBtn.addEventListener("click", () => {
-  alert("Rock");
+  playRound(1, getComputerChoice());
 });
 
 paperBtn.addEventListener("click", () => {
@@ -41,25 +41,6 @@ scissorsBtn.addEventListener("click", () => {
 //Rock - Scissors = -2
 
 console.log("Hello World");
-
-function parseRockPaperScissors(input) {
-  switch (input.toUpperCase()) {
-    case "ROCK":
-      return 1;
-      break;
-
-    case "PAPER":
-      return 2;
-      break;
-
-    case "SCISSORS":
-      return 3;
-      break;
-    default:
-      return 0;
-      break;
-  }
-}
 
 function handToString(hand) {
   switch (parseInt(hand)) {
@@ -82,35 +63,48 @@ function handToString(hand) {
   }
 }
 
-function playRound(playerChoice, cpuThrow) {
-  playerThrow = parseRockPaperScissors(playerChoice);
+function playRound(playerThrow, cpuThrow) {
   const result = playerThrow - cpuThrow;
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
     return 0;
   }
-  //console.log(`You threw ${handToString(playerThrow)}`);
-  //console.log(`The CPU threw ${handToString(cpuThrow)}`);
   //this covers ties
   if (result == 0) {
-    console.log(`Tie! you both threw`);
+    console.log(`Tie! you both threw ${handToString(playerThrow)}`);
     return 0;
   } else if (Math.abs(result) == 1) {
     //this covers the paper-rock and scissors-paper cases
     if (result > 0) {
-      //console.log("You win!");
+      console.log(
+        `You win! You: ${handToString(playerThrow)} | Cpu: ${handToString(
+          cpuThrow
+        )}`
+      );
       return 1;
     } else {
-      //console.log("You Lose :(");
+      Console.log(
+        `You Lose. You: ${handToString(playerThrow)} | Cpu: ${handToString(
+          cpuThrow
+        )}`
+      );
       return 2;
     }
   } else {
     if (result < 0) {
-      //console.log("You win!");
+      console.log(
+        `You win! You: ${handToString(playerThrow)} | Cpu: ${handToString(
+          cpuThrow
+        )}`
+      );
       return 1;
     } else {
-      //console.log("You Lose :(");
+      console.log(
+        `You Lose. You: ${handToString(playerThrow)} | Cpu: ${handToString(
+          cpuThrow
+        )}`
+      );
       return 2;
     }
   }
@@ -151,7 +145,7 @@ function playRound(playerChoice, cpuThrow) {
 
 function getComputerChoice(characther) {
   cpuThrow = Math.floor(Math.random() * 3 + 1);
-  //console.log(`I have generated this number ${cpuThrow}`);
+  return cpuThrow;
 }
 
 // function playGame() {
