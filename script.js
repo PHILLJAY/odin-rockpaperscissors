@@ -7,8 +7,12 @@
 //      Resests gamestate
 //
 
-// TODO: Add event listeners to each button
-// TODO
+// TODO: Add event listeners to each button (DONE)
+// TODO: Enable each button to play a round in console
+// TODO: Create Div for results
+// TODO: Change script to update results Div
+// TODO: Add div for score
+// TODO: update scripts again
 
 let humanScore = 0;
 let CpuScore = 0;
