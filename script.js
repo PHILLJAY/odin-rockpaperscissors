@@ -136,42 +136,26 @@ function playRound(playerThrow, cpuThrow) {
   }
   //this covers ties
   if (result == 0) {
-    console.log(`Tie! you both threw ${handToString(playerThrow)}`);
+    printResult(result, playerThrow, cpuThrow);
     return 0;
   } else if (Math.abs(result) == 1) {
     //this covers the paper-rock and scissors-paper cases
     if (result > 0) {
-      console.log(
-        `You win! You: ${handToString(playerThrow)} | Cpu: ${handToString(
-          cpuThrow
-        )}`
-      );
+      printResult(result, playerThrow, cpuThrow);
       updateResult(1);
       return 1;
     } else {
-      Console.log(
-        `You Lose. You: ${handToString(playerThrow)} | Cpu: ${handToString(
-          cpuThrow
-        )}`
-      );
+      printResult(result, playerThrow, cpuThrow);
       updateResult(2);
       return 2;
     }
   } else {
     if (result < 0) {
-      console.log(
-        `You win! You: ${handToString(playerThrow)} | Cpu: ${handToString(
-          cpuThrow
-        )}`
-      );
+      printResult(result, playerThrow, cpuThrow);
       updateResult(1);
       return 1;
     } else {
-      console.log(
-        `You Lose. You: ${handToString(playerThrow)} | Cpu: ${handToString(
-          cpuThrow
-        )}`
-      );
+      printResult(result, playerThrow, cpuThrow);
       updateResult(2);
       return 2;
     }
