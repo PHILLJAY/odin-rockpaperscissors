@@ -103,6 +103,30 @@ function handToString(hand) {
   }
 }
 
+function printResult(result, playerThrow, cpuThrow) {
+  if (result == 0) {
+    console.log(`Tie! you both threw ${handToString(playerThrow)}`);
+  } else if (result == 1) {
+    console.log(
+      `You win! You: ${handToString(playerThrow)} | Cpu: ${handToString(
+        cpuThrow
+      )}`
+    );
+  } else {
+    `You lose. You: ${handToString(playerThrow)} | Cpu: ${handToString(
+      cpuThrow
+    )}`;
+  }
+}
+
+function updateResult(result) {
+  if (result == 1) {
+    setHumanScore(getHumanScore() + 1);
+  } else if (result == 2) {
+    setCpuScore(getCpuScore() + 1);
+  }
+}
+
 function playRound(playerThrow, cpuThrow) {
   const result = playerThrow - cpuThrow;
   if (playerThrow == 0 || cpuThrow == 0) {
@@ -122,6 +146,7 @@ function playRound(playerThrow, cpuThrow) {
           cpuThrow
         )}`
       );
+      updateResult(1);
       return 1;
     } else {
       Console.log(
@@ -129,6 +154,7 @@ function playRound(playerThrow, cpuThrow) {
           cpuThrow
         )}`
       );
+      updateResult(2);
       return 2;
     }
   } else {
@@ -138,6 +164,7 @@ function playRound(playerThrow, cpuThrow) {
           cpuThrow
         )}`
       );
+      updateResult(1);
       return 1;
     } else {
       console.log(
@@ -145,6 +172,7 @@ function playRound(playerThrow, cpuThrow) {
           cpuThrow
         )}`
       );
+      updateResult(2);
       return 2;
     }
   }
