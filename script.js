@@ -4,16 +4,17 @@
 //  Bot Throw
 //      Generates a random throw, can be extended to add "personalities", i.e dude who only throws rock
 //  Reset Game
-//      Resests gamestate
+//      Ressts gamestate
 //
 
 // TODO: Add event listeners to each button (DONE)
 // TODO: Enable each button to play a round in console (DONE)
-// TODO: Add function to update cpu score and human score
-// TODO: Create Div for results
-// TODO: Change script to update results Div
-// TODO: Add div for score
-// TODO: update scripts again
+// TODO: Add function to update cpu score and human score (DONE)
+// TODO: Create Div for results (DONE)
+// TODO: Change script to update results Div (DONE)
+// TODO: Add div for score (DONE)
+// TODO: update scripts again (DONE)
+// TODO:
 
 let humanScore = 0;
 let cpuScore = 0;
@@ -40,10 +41,14 @@ function resetGame() {
   cpuScore = 0;
 }
 
-//Event Listeners
+// Scores and such
 let cpuThrow = 0;
 let playerThrow = 0;
+//Gamestate 0 = playing
+//Gamestate 1 = finished (someone won)
+let gamestate = 0;
 
+//Event Listeners
 const rockBtn = document.querySelector("#rockBtn");
 const paperBtn = document.querySelector("#paperBtn");
 const scissorsBtn = document.querySelector("#scissorsBtn");
@@ -52,20 +57,7 @@ const resultsDiv = document.querySelector("#resultsDiv");
 const scoreDiv = document.querySelector("#scoreDiv");
 
 rockBtn.addEventListener("click", () => {
-  switch (playRound(1, getComputerChoice())) {
-    case -1:
-      console.log("ERROR");
-      break;
-    case 0:
-      break;
-    case 1:
-      humanScore++;
-      break;
-    case 2:
-      cpuScore++;
-    default:
-      break;
-  }
+  playRound(1, getComputerChoice());
 });
 
 paperBtn.addEventListener("click", () => {
@@ -84,6 +76,17 @@ scissorsBtn.addEventListener("click", () => {
 //Rock - Scissors = -2
 
 console.log("Hello World");
+
+function checkForWinner() {
+  if (getCpuScore == 5) {
+    resultsDiv.textContent = "You lose!";
+    alert("You lose!");
+  }
+  if (getHumanScore == 5) {
+    alert("You win!");
+    resultsDiv.textContent = "You win!";
+  }
+}
 
 function handToString(hand) {
   switch (parseInt(hand)) {
@@ -107,19 +110,20 @@ function handToString(hand) {
 }
 
 function printResult(result, playerThrow, cpuThrow) {
-  if (result == 0) {
-    console.log(`Tie! you both threw ${handToString(playerThrow)}`);
-  } else if (result == 1) {
-    console.log(
-      `You win! You: ${handToString(playerThrow)} | Cpu: ${handToString(
-        cpuThrow
-      )}`
-    );
+  resultString = "";
+  if (result === 0) {
+    resultString = `Tie! you both threw ${handToString(playerThrow)}`;
+  } else if (result === 1) {
+    resultString = `You win! You: ${handToString(
+      playerThrow
+    )} | Cpu: ${handToString(cpuThrow)}`;
   } else {
-    `You lose. You: ${handToString(playerThrow)} | Cpu: ${handToString(
-      cpuThrow
-    )}`;
+    resultString = `You lose. You: ${handToString(
+      playerThrow
+    )} | Cpu: ${handToString(cpuThrow)}`;
   }
+  console.log(resultString);
+  resultsDiv.textContent = resultString;
 }
 
 function updateResult(result) {
@@ -128,6 +132,7 @@ function updateResult(result) {
   } else if (result == 2) {
     setCpuScore(getCpuScore() + 1);
   }
+  scoreDiv.textContent = `You: ${getHumanScore()} | Cpu: ${getCpuScore()}`;
 }
 
 function playRound(playerThrow, cpuThrow) {
@@ -135,34 +140,29 @@ function playRound(playerThrow, cpuThrow) {
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
     console.error(`playerThrow = ${playerThrow}, cpuThrow = ${cpuThrow}`);
-    return -1;
   }
   //this covers ties
   if (result == 0) {
     printResult(result, playerThrow, cpuThrow);
-    return 0;
   } else if (Math.abs(result) == 1) {
     //this covers the paper-rock and scissors-paper cases
     if (result > 0) {
-      printResult(result, playerThrow, cpuThrow);
+      printResult(1, playerThrow, cpuThrow);
       updateResult(1);
-      return 1;
     } else {
-      printResult(result, playerThrow, cpuThrow);
+      printResult(2, playerThrow, cpuThrow);
       updateResult(2);
-      return 2;
     }
   } else {
     if (result < 0) {
-      printResult(result, playerThrow, cpuThrow);
+      printResult(1, playerThrow, cpuThrow);
       updateResult(1);
-      return 1;
     } else {
-      printResult(result, playerThrow, cpuThrow);
+      printResult(2, playerThrow, cpuThrow);
       updateResult(2);
-      return 2;
     }
   }
+  checkForWinner();
 }
 
 // function calculateWinner() {
@@ -198,8 +198,9 @@ function playRound(playerThrow, cpuThrow) {
 //   }
 // }
 
-function getComputerChoice(characther) {
+function getComputerChoice() {
   cpuThrow = Math.floor(Math.random() * 3 + 1);
+  console.log(`The CPU threw ${handToString(cpuThrow)}`);
   return cpuThrow;
 }
 
