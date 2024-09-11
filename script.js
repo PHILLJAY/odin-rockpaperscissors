@@ -7,15 +7,27 @@
 //      Resests gamestate
 //
 
-//TODO: Add console.log output to playRound
-//TODO: Add div to index.html for output
-//TODO: Create event listeners with each button that play a round
-//TODO: Switch console.logs to updating the div.
-
+// TODO: Add event listeners to each button
+// TODO
 
 let humanScore = 0;
 let CpuScore = 0;
 
+const rockBtn = document.querySelector("#rockBtn");
+const paperBtn = document.querySelector("#paperBtn");
+const scissorsBtn = document.querySelector("#scissorsBtn");
+
+rockBtn.addEventListener("click", () => {
+  alert("Rock");
+});
+
+paperBtn.addEventListener("click", () => {
+  alert("Paper");
+});
+
+scissorsBtn.addEventListener("click", () => {
+  alert("Scissors");
+});
 //1 = Rock
 //2 = Paper
 //3 = Scissors
@@ -67,7 +79,7 @@ function handToString(hand) {
 }
 
 function playRound(playerChoice, cpuThrow) {
-playerThrow = parseRockPaperScissors(playerChoice);
+  playerThrow = parseRockPaperScissors(playerChoice);
   const result = playerThrow - cpuThrow;
   if (playerThrow == 0 || cpuThrow == 0) {
     console.error("Error, one of the players has not picked rock or paper");
