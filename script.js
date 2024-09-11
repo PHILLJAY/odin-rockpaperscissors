@@ -48,6 +48,9 @@ const rockBtn = document.querySelector("#rockBtn");
 const paperBtn = document.querySelector("#paperBtn");
 const scissorsBtn = document.querySelector("#scissorsBtn");
 
+const resultsDiv = document.querySelector("#resultsDiv");
+const scoreDiv = document.querySelector("#scoreDiv");
+
 rockBtn.addEventListener("click", () => {
   switch (playRound(1, getComputerChoice())) {
     case -1:
