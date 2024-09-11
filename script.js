@@ -48,6 +48,15 @@ let playerThrow = 0;
 //Gamestate 1 = finished (someone won)
 let gamestate = 0;
 
+//  getters and setters
+function getGamestate() {
+  return gamestate;
+}
+
+function setGamestate(newGamestate) {
+  gamestate = newGamestate;
+}
+
 //Event Listeners
 const rockBtn = document.querySelector("#rockBtn");
 const paperBtn = document.querySelector("#paperBtn");
@@ -78,13 +87,17 @@ scissorsBtn.addEventListener("click", () => {
 console.log("Hello World");
 
 function checkForWinner() {
-  if (getCpuScore == 5) {
-    resultsDiv.textContent = "You lose!";
+  if (getCpuScore() === 5) {
+    setGamestate(1);
+    resultsDiv.textContent = "You lose! Play Again?";
+    scoreDiv.textContent = `Final Score: You: ${getHumanScore()} | Cpu: ${getCpuScore()}`;
     alert("You lose!");
   }
-  if (getHumanScore == 5) {
+  if (getHumanScore() === 5) {
+    setGamestate(1);
+    resultsDiv.textContent = "You win! Play Again?";
+    scoreDiv.textContent = `Final Score: You: ${getHumanScore()} | Cpu: ${getCpuScore()}`;
     alert("You win!");
-    resultsDiv.textContent = "You win!";
   }
 }
 
