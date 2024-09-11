@@ -14,7 +14,7 @@
 // TODO: Change script to update results Div (DONE)
 // TODO: Add div for score (DONE)
 // TODO: update scripts again (DONE)
-// TODO:
+// TODO: MAKE LESS UGLY
 
 let humanScore = 0;
 let cpuScore = 0;
